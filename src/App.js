@@ -1,51 +1,47 @@
 import React, { Component } from "react";
 
-const SameFileFuncComp = (props) => {
-  return (
-    <div className="SameFileFuncComp">
-      <p>Props:</p>
-      <pre>{JSON.stringify(props, null, 2)}</pre>
-    </div>
-  );
-};
-
 class App extends Component {
-  constructor() {
-    super();
-    console.log("Constructor called");
-  }
-
   state = {
-    Name: "Bharat",
-    Salutation: "Hola",
-    Timer: 1,
+    Name: "",
+    Refresh: false,
   };
-
   componentDidMount() {
-    console.log("componentDidMount called");
-    setInterval(() => {
-      this.setState({
-        Name: "Bharatchandran",
-        Salutation: "Hello",
-        Timer: this.state.Timer + 1,
-      });
-    }, 5000);
+    console.log("CompoundDidMount called");
   }
-  componentDidUpdate() {
-    console.log("componentDidUpdate called");
+  componentDidUpdate(prevProps, prevState) {
+    console.log("CompoundDidUpdate called");
+    console.log({ prevProps, prevState });
+    if (prevState.Refresh !== this.state.Refresh) {
+      window.alert("Call the API!");
+    }
   }
   render() {
     //if (this.state.Salutation !== "Hello")
 
-    console.log("render called");
+    console.log("Render called!");
     return (
       <div>
         <p>
-          {this.state.Salutation}
-          {this.state.Name}
+          Hello.{" "}
+          {this.state.Name.trim().length === 0
+            ? "Please Enter your Name"
+            : `My name is ${this.state.Name}`}
         </p>
-        <p>Timer: {this.state.Timer}</p>
-        <SameFileFuncComp Name="Bharat" Raj={true} Praveen={15} />
+        <input
+          type="text"
+          value={this.state.Name}
+          onChange={(e) => {
+            this.setState({ Name: e.target.value });
+          }}
+        ></input>
+        <button
+          onClick={() => {
+            this.setState({ Refresh: !this.state.Refresh });
+          }}
+          disabled={this.state.Name.trim().length === 0}
+        >
+          Refresh
+        </button>
       </div>
     );
   }
