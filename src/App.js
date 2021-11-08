@@ -1,5 +1,14 @@
 import React, { Component } from "react";
 
+const SameFileFuncComp = (props) => {
+  return (
+    <div className="SameFileFuncComp">
+      <p>Props:</p>
+      <pre>{JSON.stringify(props, null, 2)}</pre>
+    </div>
+  );
+};
+
 class App extends Component {
   constructor() {
     super();
@@ -36,6 +45,7 @@ class App extends Component {
           {this.state.Name}
         </p>
         <p>Timer: {this.state.Timer}</p>
+        <SameFileFuncComp Name="Bharat" Raj={true} Praveen={15} />
       </div>
     );
   }
