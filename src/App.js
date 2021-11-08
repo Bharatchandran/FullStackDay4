@@ -9,27 +9,33 @@ class App extends Component {
   state = {
     Name: "Bharat",
     Salutation: "Hola",
+    Timer: 1,
   };
 
   componentDidMount() {
     console.log("componentDidMount called");
+    setInterval(() => {
+      this.setState({
+        Name: "Bharatchandran",
+        Salutation: "Hello",
+        Timer: this.state.Timer + 1,
+      });
+    }, 5000);
   }
   componentDidUpdate() {
     console.log("componentDidUpdate called");
   }
   render() {
-    if (this.state.Salutation !== "Hello")
-      setTimeout(() => {
-        this.setState({
-          Name: "Bharatchandran",
-          Salutation: "Hello",
-        });
-      }, 5000);
+    //if (this.state.Salutation !== "Hello")
+
     console.log("render called");
     return (
       <div>
-        {this.state.Salutation}
-        {this.state.Name}
+        <p>
+          {this.state.Salutation}
+          {this.state.Name}
+        </p>
+        <p>Timer: {this.state.Timer}</p>
       </div>
     );
   }
