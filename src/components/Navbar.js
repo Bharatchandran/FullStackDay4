@@ -1,4 +1,27 @@
-import React from "react";
+import { Route, NavLink } from "react-router-dom";
+
+const Links = [
+  {
+    Name: "Home",
+    Link: "/",
+  },
+  {
+    Name: "About Me",
+    Link: "/about",
+  },
+  {
+    Name: "Download",
+    Link: "/downloads",
+  },
+  {
+    Name: "Feedback",
+    Link: "/feedback",
+  },
+  {
+    Name: "Random Page",
+    Link: "/bcc123",
+  },
+];
 
 const Navbar = ({ dark, children, toggleNav }) => {
   dark = !!dark ? "dark" : "light";
