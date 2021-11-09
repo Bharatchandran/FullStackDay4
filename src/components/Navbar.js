@@ -33,14 +33,19 @@ const Navbar = ({ dark, children, toggleNav }) => {
         </span>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link">About me</a>
-            </li>
+            {Links.map((link) => (
+              <li className="nav-item" key={link.Link}>
+                <NavLink
+                  className="nav-link "
+                  aria-current="page"
+                  activeClassName="active"
+                  to={link.Link}
+                >
+                  {link.Name}
+                </NavLink>
+              </li>
+            ))}
+
             <li className="nav-item">
               <span className="nav-link nav-action" onClick={toggleNav}>
                 Toggle Nav
