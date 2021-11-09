@@ -8,7 +8,7 @@ class App extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="App">
         <Navbar dark={this.state.Dark} toggleNav={this.toggleNav}>
           React Application
         </Navbar>
